@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>WEReports auslesen und speichern — Dr. Watson und Datenbank 1 Dokumentation</title>
+    <link rel="stylesheet" href="WEReports%20auslesen%20und%20speichern%20%E2%80%94%20Dr.%20Watson%20und%20Datenbank%201%20Dokumentation-Dateien/sphinxdoc.css" type="text/css">
+    <link rel="stylesheet" href="WEReports%20auslesen%20und%20speichern%20%E2%80%94%20Dr.%20Watson%20und%20Datenbank%201%20Dokumentation-Dateien/pygments.css" type="text/css">
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="WEReports%20auslesen%20und%20speichern%20%E2%80%94%20Dr.%20Watson%20und%20Datenbank%201%20Dokumentation-Dateien/jquery.js"></script>
+    <script type="text/javascript" src="WEReports%20auslesen%20und%20speichern%20%E2%80%94%20Dr.%20Watson%20und%20Datenbank%201%20Dokumentation-Dateien/underscore.js"></script>
+    <script type="text/javascript" src="WEReports%20auslesen%20und%20speichern%20%E2%80%94%20Dr.%20Watson%20und%20Datenbank%201%20Dokumentation-Dateien/doctools.js"></script>
+    <script type="text/javascript" src="WEReports%20auslesen%20und%20speichern%20%E2%80%94%20Dr.%20Watson%20und%20Datenbank%201%20Dokumentation-Dateien/translations.js"></script>
+    <link rel="index" title="Stichwortverzeichnis" href="file:///C:/schule/docbook/watson_awp/doku/klasse_11_awp/build/html/genindex.html">
+    <link rel="search" title="Suche" href="file:///C:/schule/docbook/watson_awp/doku/klasse_11_awp/build/html/search.html">
+    <link rel="prev" title="Runde 4" href="file:///C:/schule/docbook/watson_awp/doku/klasse_11_awp/build/html/refactoring.html"> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="file:///C:/schule/docbook/watson_awp/doku/klasse_11_awp/build/html/genindex.html" title="Stichwortverzeichnis" accesskey="I">Index</a></li>
+        <li class="right">
+          <a href="file:///C:/schule/docbook/watson_awp/doku/klasse_11_awp/build/html/refactoring.html" title="Runde 4" accesskey="P">zurück</a> |</li>
+        <li class="nav-item nav-item-0"><a href="file:///C:/schule/docbook/watson_awp/doku/klasse_11_awp/build/html/index.html">Dr. Watson und Datenbank 1 Dokumentation</a> »</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="file:///C:/schule/docbook/watson_awp/doku/klasse_11_awp/build/html/index.html">Inhalt</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">WEReports auslesen und speichern</a><ul>
+<li><a class="reference internal" href="#ausgangssituation">Ausgangssituation</a></li>
+<li><a class="reference internal" href="#umsetzung">Umsetzung</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#aufgabenstellung">Aufgabenstellung</a></li>
+</ul>
+
+  <h4>Vorheriges Thema</h4>
+  <p class="topless"><a href="file:///C:/schule/docbook/watson_awp/doku/klasse_11_awp/build/html/refactoring.html" title="vorheriges Kapitel">Runde 4</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Diese Seite</h3>
+    <ul class="this-page-menu">
+      <li><a href="file:///C:/schule/docbook/watson_awp/doku/klasse_11_awp/build/html/_sources/wer_to_database.rst.txt" rel="nofollow">Quellcode anzeigen</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="" role="search">
+  <h3>Schnellsuche</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input name="q" type="text"></div>
+      <div><input value="Los" type="submit"></div>
+      <input name="check_keywords" value="yes" type="hidden">
+      <input name="area" value="default" type="hidden">
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="wereports-auslesen-und-speichern">
+<h1>WEReports auslesen und speichern<a class="headerlink" href="#wereports-auslesen-und-speichern" title="Link zu dieser Überschrift">¶</a></h1>
+<div class="section" id="ausgangssituation">
+<h2>Ausgangssituation<a class="headerlink" href="#ausgangssituation" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Ihre Firma hat europaweit ca 2000 Rechner im Einsatz, an denen häufig
+ wechslende Mitarbeiter ihrer Arbeit nachgehen. Ein Mitarbeiter kann 
+dabei durchaus an mehreren Rechnern arbeiten und erzeugt dabei lokale 
+Profile.
+In letzter Zeit häufen sich die Fehlermeldungen von Nutzern bzw. ihre 
+Monitoring-Software meldet anormale Abstürze der Rechner. Bei ersten 
+oberflächlichen Beobachtungen stellen Sie ein Ansteigen der sog. 
+WER-Reports auf den Maschinen fest.
+Ihre Firma möchte deshalb die Auswertung von WER-Files verbessern. Diese
+ werden für jeden User in  speziellen Verzeichnissen auf den PCs 
+angelegt und beinhalten Informationen zum Absturzverhalten eines 
+Programms. Ihre Aufgabe besteht darin, diese Informationen 
+zusammenzufassen und für Auswertungen in einer Datenbank zur Verfügung 
+zu stellen.</p>
+<p>Aus den einzelnen Reports interessiert Sie der</p>
+<ul class="simple">
+<li>AppName,</li>
+<li>Pfad der App,</li>
+<li>ReportType,</li>
+<li>der Name des verursachenden Benutzers (Name des übergeordneten Ordners),</li>
+<li>die jeweilige MAC-Adresse des Rechners (ein User kann auf verschiedenen Rechnern arbeiten)</li>
+<li>das Datum des Berichts (Datum der Datei)</li>
+</ul>
+<p>Nachdem die Daten extrahiert und gespeichert worden sind, können die 
+Dateien in den Ordnern gelöscht werden. Ihr Skript soll periodisch diese
+ verzeichnisse scannen und neue Dateien wiederum bearbeiten.</p>
+<p>Die Ergebnisse sollen in einer Datenbank festgehalten werden, mit 
+deren Hilfe man anschließend Auswertungen durchführen kann, z.B.</p>
+<ul class="simple">
+<li>Top 5 – Crash-Apps</li>
+<li>Ausgabe für einen bestimmten User</li>
+<li>Ausgabe für bestimmte Rechner</li>
+<li>…</li>
+</ul>
+<p>Bisher existierten in Ihrer Firma Powershell-Skripte, die eine 
+Ausgabe verschiedenster Informationen
+der WER-Reports über die Konsole möglich machen. Diese Informationen 
+beziehen sich aber nur auf den jeweiligen Einzel-PC. Eine Aggregation 
+von Informationen über alle Computer ist nicht möglich. Der Leiter der 
+IT-Abteilung beschließt daher, dieses Skript als Ausgangspunkt für eine 
+Erweiterung zu nehmen. Die Daten sollen nun in einer Mysql-Datenbank 
+gespeichert werden und von dort durchsucht werden können und grafisch 
+ausgegeben werden.</p>
+<p>Ihre Aufgabe besteht deshalb nicht nur im Neuschreiben der 
+Erfassungssoftware, sondern auch im Schreiben einer entsprechenden 
+Auswertungssoftware.</p>
+<p>Zur Information erhalten Sie vom IT-Leiter noch das folgende PS-Skript</p>
+<div class="sidebar">
+<p class="first sidebar-title">Skript</p>
+<p><a class="reference download internal" href="file:///C:/schule/docbook/watson_awp/doku/klasse_11_awp/build/html/_downloads/werreports_10.ps1" download=""><code class="xref download docutils literal"><span class="pre">Skript</span></code></a></p>
+<p class="last"><a class="reference download internal" href="file:///C:/schule/docbook/watson_awp/doku/klasse_11_awp/build/html/_downloads/bemerkungen.docx" download=""><code class="xref download docutils literal"><span class="pre">Bemerkungen</span></code></a></p>
+</div>
+<div class="admonition-aufgabe admonition">
+<p class="first admonition-title">Aufgabe</p>
+<p class="last">Analysieren Sie das dargestellte Skript <strong>werreports_10.ps1</strong>.</p>
+</div>
+<a class="reference internal image-reference" href="file:///C:/schule/docbook/watson_awp/doku/klasse_11_awp/build/html/_images/notiz.png"><img alt="_images/notiz.png" src="WEReports%20auslesen%20und%20speichern%20%E2%80%94%20Dr.%20Watson%20und%20Datenbank%201%20Dokumentation-Dateien/notiz.png" style="width: 500px;"></a>
+<div class="sidebar">
+<p class="first sidebar-title">Tafelbilder</p>
+<p><a class="reference download internal" href="file:///C:/schule/docbook/watson_awp/doku/klasse_11_awp/build/html/_downloads/used_functions.jpg" download=""><code class="xref download docutils literal"><span class="pre">Gebraucht</span></code></a></p>
+<p><a class="reference download internal" href="file:///C:/schule/docbook/watson_awp/doku/klasse_11_awp/build/html/_downloads/functionen_ablauf_und_daten_alt.jpg" download=""><code class="xref download docutils literal"><span class="pre">getReportData_Ablauf</span></code></a></p>
+<p class="last"><a class="reference download internal" href="file:///C:/schule/docbook/watson_awp/doku/klasse_11_awp/build/html/_downloads/BenuterArrayList_Verwendung_by_ref.jpg" download=""><code class="xref download docutils literal"><span class="pre">ArrayList_Benutzer</span></code></a></p>
+</div>
+</div>
+<div class="section" id="umsetzung">
+<h2>Umsetzung<a class="headerlink" href="#umsetzung" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Da Powershell nicht ihre Haussprache und der Umfang des bisherigen 
+Skriptes nicht zu umfangreich ist, beschließen Sie, den Quellcode nicht 
+weiterzuentwickeln, sondern mit Hilfe „Ihrer“ Programmiersprache neu zu 
+entwickeln. Sie beschließen als erstes eine Analyse der zu erfassenden 
+Daten sowie deren Zusammenhänge vorzunehmen.</p>
+<p>Beispielhafte WER-Reports finden Sie auf ihrem T-Laufwerk im Ordner WER-Demo.</p>
+<div class="admonition-gruppenbildung admonition">
+<p class="first admonition-title">Gruppenbildung</p>
+<p class="last">Finden Sie sich in Projektteams zusammen; diese sollten 
+in Abhängigkeit der jeweiligen Programmiersprachenkenntnisse gebildet 
+werden.</p>
+</div>
+<div class="admonition-vorbereitende-aufgabenstellung admonition">
+<p class="first admonition-title">Vorbereitende Aufgabenstellung</p>
+<ul class="last simple">
+<li>Erstellen Sie sich auf einem öffentlichen Versionsverwaltungsserver
+(github/bitbucket/visualstudio.com) ein Projekt.</li>
+<li>Sie können notwendige Clientsoftware lokal auf den Rechnern installieren.</li>
+<li>Fügen Sie alle Teammitglieder als Entwickler hinzu.</li>
+<li>Erstellen Sie auf einem Rechner ein Dummy-Projekt; checken sie 
+dieses in die
+Versionsverwaltung ein; achten Sie inbesondere auf die Ordnerstrukturen;
+ lassen sie dieses von den übrigen Teammitgliedern auf ihre lokalen 
+Rechner auszuchecken.</li>
+<li>Dokumentieren Sie ihre Arbeit indem Sie  Sie alle wichtigen 
+Informationen festhalten;  Sie können dazu beispielwesie die 
+Projektfähigkeiten von github/gitlab/bitbucket
+verwenden</li>
+<li>Legen Sie das Dokument der Lehrkraft vor und heften Sie es nach Gegenzeichnung in
+ihre Projektmappe ab</li>
+</ul>
+</div>
+<div class="admonition-aufgabe admonition">
+<p class="first admonition-title">Aufgabe</p>
+<p class="last">Erstellen Sie ein ER-Modell bzw. Klassendiagramm.</p>
+</div>
+<a class="reference internal image-reference" href="file:///C:/schule/docbook/watson_awp/doku/klasse_11_awp/build/html/_images/notiz.png"><img alt="_images/notiz.png" src="WEReports%20auslesen%20und%20speichern%20%E2%80%94%20Dr.%20Watson%20und%20Datenbank%201%20Dokumentation-Dateien/notiz.png" style="width: 500px;"></a>
+<div class="sidebar">
+<p class="first sidebar-title">Klassendiagramm / ERM</p>
+<p><a class="reference download internal" href="file:///C:/schule/docbook/watson_awp/doku/klasse_11_awp/build/html/_downloads/kd1.png" download=""><code class="xref download docutils literal"><span class="pre">KD</span></code></a></p>
+<p><a class="reference download internal" href="file:///C:/schule/docbook/watson_awp/doku/klasse_11_awp/build/html/_downloads/kd1.sql" download=""><code class="xref download docutils literal"><span class="pre">SQL</span></code></a></p>
+<p><a class="reference download internal" href="file:///C:/schule/docbook/watson_awp/doku/klasse_11_awp/build/html/_downloads/reduz2_final.ps1" download=""><code class="xref download docutils literal"><span class="pre">PS1</span></code></a></p>
+<p class="last"><a class="reference download internal" href="file:///C:/schule/docbook/watson_awp/doku/klasse_11_awp/build/html/_downloads/Vergleich_der_beiden_Skripte.docx" download=""><code class="xref download docutils literal"><span class="pre">Vergleich</span></code></a></p>
+</div>
+</div>
+</div>
+<div class="section" id="aufgabenstellung">
+<h1>Aufgabenstellung<a class="headerlink" href="#aufgabenstellung" title="Link zu dieser Überschrift">¶</a></h1>
+<p>Überlegen Sie sich im weiteren Verlauf, wie Sie das Projekt programmiertechnisch umsetzen wollen.</p>
+<ul class="simple">
+<li>Welche Programmiersprachen / Frameworks wollen Sie einsetzen</li>
+<li>Welche Datenbanktechnologien benutzen sie (relational, ….)</li>
+<li>Trennen Sie zwischen Client und Server-basierten Programmen.</li>
+<li>Wie wollen diese Programme miteinander kommunizieren.</li>
+<li>Benutzen Sie CI-Server zum Builden und Testen der Software</li>
+<li>Stellen Sie einen Zeitplan auf; Abgabe des Projektes soll in der 8. Woche sein</li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="file:///C:/schule/docbook/watson_awp/doku/klasse_11_awp/build/html/genindex.html" title="Stichwortverzeichnis">Index</a></li>
+        <li class="right">
+          <a href="file:///C:/schule/docbook/watson_awp/doku/klasse_11_awp/build/html/refactoring.html" title="Runde 4">zurück</a> |</li>
+        <li class="nav-item nav-item-0"><a href="file:///C:/schule/docbook/watson_awp/doku/klasse_11_awp/build/html/index.html">Dr. Watson und Datenbank 1 Dokumentation</a> »</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        © Copyright 2015, STE.
+      Mit <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5 erstellt.
+    </div>
+  
+</body></html>
