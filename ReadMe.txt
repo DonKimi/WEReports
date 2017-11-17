@@ -1,6 +1,7 @@
 Programmiersprach: C#
 CI/Build Server: Jenkins
 
+
 Arbeitsschritte:
 
 - CI-/Build-Server aufsetzen - Jenkins (Christina, Dominik, Julia, Tatjana)
