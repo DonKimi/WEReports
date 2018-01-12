@@ -1,0 +1,6 @@
+H:\11FI1\AWP_S\WEReports\WEReports\WEReports\bin\Debug\WEReports.exe.config
+H:\11FI1\AWP_S\WEReports\WEReports\WEReports\obj\Debug\WEReports.csprojResolveAssemblyReference.cache
+H:\11FI1\AWP_S\WEReports\WEReports\WEReports\bin\Debug\WEReports.exe
+H:\11FI1\AWP_S\WEReports\WEReports\WEReports\bin\Debug\WEReports.pdb
+H:\11FI1\AWP_S\WEReports\WEReports\WEReports\obj\Debug\WEReports.exe
+H:\11FI1\AWP_S\WEReports\WEReports\WEReports\obj\Debug\WEReports.pdb
