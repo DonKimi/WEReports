@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Net.NetworkInformation;
 
 namespace WEReports
 {
-    class Data
+    class File
     {
         public String path;
         private String[] lines;
@@ -72,6 +73,20 @@ namespace WEReports
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+            return null;
+        }
+
+        public static PhysicalAddress GetMacAddress()
+        {
+            foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
+            {
+                // Only consider Ethernet network interfaces
+                if (nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet &&
+                    nic.OperationalStatus == OperationalStatus.Up)
+                {
+                    return nic.GetPhysicalAddress();
+                }
             }
             return null;
         }

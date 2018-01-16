@@ -10,22 +10,50 @@ namespace WEReports
     class Program
     {
         private static String rootPath = @"T:\AWP_11_STE\wer_reports";
-        private static String[] subfolders;
-        
+        private static List<String> files = new List<string>();
 
 
         static void Main(string[] args)
         {
-            Folder rootFolder = new Folder(rootPath);
+            checkForEverything(rootPath);
 
-            rootFolder.check();
+            foreach (String file in files)
+            {
+                Console.WriteLine(file + "\n");
+            }
+            
+            
 
-            Data test = new Data();
-            test.path = @"T:\AWP_11_STE\wer_reports\Guenther\AppCrash_AD2F1837.HPPrint_7abab9a238d31ce95943fa32488e7ff1e0ef441f_8eaf7b11_1838f853\Report.wer";
-            test.readFile();
-            test.editLines();
             Console.ReadKey();
         }
+
+        private static void checkForEverything(String sDir)
+        {
+            try
+            {
+                foreach (String dir in Directory.GetDirectories(sDir))
+                {
+                    foreach (String fil in Directory.GetFiles(dir, "*.wer"))
+                    {
+                        files.Add(fil);
+                    }
+                    checkForEverything(dir);
+                }
+            }
+            catch (DirectoryNotFoundException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+        }
+
+        private void checkForData()
+        {
+            foreach (String fil in files)
+            {
+
+            }
+        }
+
     }
 }
 
