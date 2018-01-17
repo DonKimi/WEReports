@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Net.NetworkInformation;
 
 namespace WEReports
 {
@@ -11,6 +12,7 @@ namespace WEReports
     {
         private static String rootPath = @"T:\AWP_11_STE\wer_reports";
         private static List<String> files = new List<string>();
+        static List<File> listeFiles = new List<File>();
 
 
         static void Main(string[] args)
@@ -35,7 +37,7 @@ namespace WEReports
                 {
                     foreach (String fil in Directory.GetFiles(dir, "*.wer"))
                     {
-                        files.Add(fil);
+                        listeFiles.Add(new File(fil));
                     }
                     checkForEverything(dir);
                 }
@@ -46,12 +48,30 @@ namespace WEReports
             }
         }
 
-        private void checkForData()
-        {
-            foreach (String fil in files)
-            {
 
+        public static PhysicalAddress GetMacAddress()
+        {
+            foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
+            {
+                // Only consider Ethernet network interfaces
+                if (nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet &&
+                    nic.OperationalStatus == OperationalStatus.Up)
+                {
+                    return nic.GetPhysicalAddress();
+                }
             }
+            return null;
+        }
+
+        private static void checkForData()
+        {
+            foreach (File x in listeFiles)
+            {
+                x.readFile();
+                x.editLines();
+                // in xml datei schreiben
+            }
+
         }
 
     }
