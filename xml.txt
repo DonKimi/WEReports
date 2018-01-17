@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<device mac="macaddress" timestamp="time">
+	<user name="donkimi">
+		<reports>
+			<appname></appname>
+			<apppath></apppath>
+			<reporttype></reporttype>
+			<eventtime></eventtime>
+		</reports>
+	</user>
+</device>
