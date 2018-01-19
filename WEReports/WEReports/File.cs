@@ -18,10 +18,11 @@ namespace WEReports
         private String appPath;
         private int reportType;
         private int date;
+        private String user;
         
-        public File(String Path)
+        public File(String path)
         {
-            this.path = Path;
+            this.path = path;
         }
 
         public void readFile()
